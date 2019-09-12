@@ -4,15 +4,27 @@ import calculator as calc
 class TestCalculator(pyunit.TestCase):
     
     def test_add(self):
-        result = calc.add(5, 5)
+        result = calc.add(0,0)
+        self.assertEqual(result, 0)
+
+        result = calc.add(-1,-1)
+        self.assertEqual(result, -2)
+
+        result = calc.add(5, 4)
+        self.assertEqual(result, 9)
+
+    def test_add_of_many(self):
+        result = calc.add(1, 2, 3)
+        self.assertEqual(result, 6)
+
+        result = calc.add(1, -2, 3)
+        self.assertEqual(result, 2)
+
+        result = calc.add(-1, -2, -3)
+        self.assertEqual(result, -6)
+
+        result = calc.add(1, 2, 3, 4)
         self.assertEqual(result, 10)
-
-    def test_subtract(self):
-        result = calc.subtract(3, 2)
-        self.assertEqual(result, 1)
-
-        result = calc.subtract(2, 3)
-        self.assertEqual(result, -1)
 
     def test_multiply(self):
         result = calc.multiply(4, 2)
@@ -21,11 +33,24 @@ class TestCalculator(pyunit.TestCase):
         result = calc.multiply(4, 0)
         self.assertEqual(result, 0)
 
-    def test_divide(self):
-        result = calc.divide(6, 3)
-        self.assertEqual(result, 2)
+        result = calc.multiply(4, -2)
+        self.assertEqual(result, -8)
 
-        self.assertRaises(ValueError, calc.divide, 6, 0)
+    def test_multiply_of_many(self):
+        result = calc.multiply(4, 2, 1)
+        self.assertEqual(result, 8)
+
+        result = calc.multiply(4, 0)
+        self.assertEqual(result, 0)
+
+        result = calc.multiply(4, -2, 9)
+        self.assertEqual(result, -72)
+
+        result = calc.multiply(4, -2, -1)
+        self.assertEqual(result, 8)
+
+        result = calc.multiply(4, 2, 2, 2)
+        self.assertEqual(result, 32)
 
 if __name__ == '__main__':
     pyunit.main()
