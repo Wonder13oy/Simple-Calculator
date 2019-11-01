@@ -1,5 +1,8 @@
 import unittest as pyunit
-import calculator as calc
+import sys
+
+sys.path.append('./../src/')
+import simple_calculator as calc
 
 class TestCalculator(pyunit.TestCase):
     
